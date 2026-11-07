@@ -1,0 +1,14 @@
+{
+  "name": "bindu-hotel-management",
+  "version": "1.0.0",
+  "description": "A simple hotel management website built with Node.js, Express, HTML, CSS, JavaScript and SQLite.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "express": "^4.21.2"
+  }
+}
