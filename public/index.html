@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bindu Hotel Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand-mark">BH</div>
+    <div class="brand-name">BINDU <span>HOTEL</span></div>
+    <p class="brand-caption">MANAGEMENT SYSTEM</p>
+    <nav>
+      <button class="nav-link active" data-view="dashboard">▦ <span>Dashboard</span></button>
+      <button class="nav-link" data-view="rooms">▤ <span>Rooms</span></button>
+      <button class="nav-link" data-view="bookings">▣ <span>Bookings</span></button>
+      <button class="nav-link" data-view="guests">♙ <span>Guests</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="avatar">B</div>
+      <div><strong>Bindu</strong><small>Administrator</small></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">WELCOME TO YOUR WORKSPACE</p>
+        <h1 id="page-title">Dashboard</h1>
+      </div>
+      <div class="top-right"><span class="live-dot"></span> System ready</div>
+    </header>
+
+    <section id="dashboard-view" class="view">
+      <div class="welcome-card">
+        <div>
+          <p class="eyebrow light">HOTEL OVERVIEW</p>
+          <h2>Good day, Bindu 👋</h2>
+          <p>Manage your rooms, guests and reservations in one place.</p>
+        </div>
+        <div class="welcome-icon">✦</div>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-icon purple">▤</div><p>Total Rooms</p><strong id="stat-rooms">0</strong><small>Rooms in the system</small></article>
+        <article class="stat-card"><div class="stat-icon green">▣</div><p>Active Bookings</p><strong id="stat-bookings">0</strong><small>Confirmed reservations</small></article>
+        <article class="stat-card"><div class="stat-icon orange">♙</div><p>Registered Guests</p><strong id="stat-guests">0</strong><small>Guest records</small></article>
+        <article class="stat-card"><div class="stat-icon blue">₹</div><p>Booking Revenue</p><strong id="stat-revenue">₹0</strong><small>Estimated confirmed total</small></article>
+      </div>
+      <div class="section-heading"><div><p class="eyebrow">GET STARTED</p><h2>Quick actions</h2></div></div>
+      <div class="quick-grid">
+        <button class="quick-card" data-go="bookings"><span class="quick-icon">＋</span><strong>New booking</strong><small>Reserve a room for a guest</small></button>
+        <button class="quick-card" data-go="rooms"><span class="quick-icon">▤</span><strong>Manage rooms</strong><small>Add and view hotel rooms</small></button>
+        <button class="quick-card" data-go="guests"><span class="quick-icon">♙</span><strong>View guests</strong><small>See registered guest details</small></button>
+      </div>
+      <div class="note">Tip: Add rooms first, then create bookings from the Bookings page.</div>
+    </section>
+
+    <section id="rooms-view" class="view hidden">
+      <div class="section-heading"><div><p class="eyebrow">PROPERTY SETUP</p><h2>Room management</h2></div></div>
+      <form id="room-form" class="form-card">
+        <h3>Add a room</h3>
+        <div class="form-grid">
+          <label>Room number<input name="room_number" placeholder="e.g. 301" required></label>
+          <label>Room type<select name="room_type"><option>Single</option><option>Double</option><option>Deluxe</option><option>Suite</option></select></label>
+          <label>Price per night (₹)<input name="price" type="number" min="1" placeholder="1500" required></label>
+          <button class="primary-btn" type="submit">＋ Add room</button>
+        </div>
+      </form>
+      <div class="table-card"><div class="table-title"><h3>All rooms</h3><span id="room-count" class="count-pill">0 rooms</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Room</th><th>Type</th><th>Price / night</th><th>Status</th><th>Action</th></tr></thead><tbody id="rooms-table"></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="bookings-view" class="view hidden">
+      <div class="section-heading"><div><p class="eyebrow">RESERVATIONS</p><h2>Booking management</h2></div></div>
+      <form id="booking-form" class="form-card">
+        <h3>Create a booking</h3>
+        <div class="form-grid booking-grid">
+          <label>Guest name<input name="guest_name" placeholder="Full name" required></label>
+          <label>Phone number<input name="phone" placeholder="Mobile number" required></label>
+          <label>Email (optional)<input name="email" type="email" placeholder="guest@example.com"></label>
+          <label>Select room<select name="room_id" id="booking-room" required></select></label>
+          <label>Check-in<input name="check_in" type="date" required></label>
+          <label>Check-out<input name="check_out" type="date" required></label>
+        </div>
+        <button class="primary-btn form-submit" type="submit">＋ Confirm booking</button>
+      </form>
+      <div class="table-card"><div class="table-title"><h3>All bookings</h3><span id="booking-count" class="count-pill">0 bookings</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Guest</th><th>Room</th><th>Check-in</th><th>Check-out</th><th>Status</th><th>Action</th></tr></thead><tbody id="bookings-table"></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="guests-view" class="view hidden">
+      <div class="section-heading"><div><p class="eyebrow">CUSTOMER DIRECTORY</p><h2>Registered guests</h2></div></div>
+      <div class="table-card"><div class="table-title"><h3>Guest list</h3><span id="guest-count" class="count-pill">0 guests</span></div>
+        <div class="table-wrap"><table><thead><tr><th>Name</th><th>Phone</th><th>Email</th></tr></thead><tbody id="guests-table"></tbody></table></div>
+      </div>
+    </section>
+    <footer>© <span id="year"></span> Bindu Hotel Management · Made with care</footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
